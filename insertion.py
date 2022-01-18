@@ -1,13 +1,24 @@
-# print(isinstance(3, float))
+def insertSort(data):
+    temp = 0
+    current = 0
+    atLHS = False
 
-array = [1, 5, 6, 8, 10, 26, 53]
-value = 26
+    for i in range(0, len(data)):
+        current = i
+        atLHS = False
 
-split = 0
+        while data[current] < data[current - 1] and not atLHS:
+            temp = data[current]
+            data[current] = data[current - 1]
+            data[current - 1] = temp
 
-if isinstance(len(array)/2, float): # if split is decimal, round down
-    split = int(len(array)/2)
-else:
-    split = len(array)/2
+            if current > 1:
+                current -= 1
+            else:
+                atLHS = True
+    return data
 
-print(array[split])
+unsortedArr = [25, 4, 643, 10, 454, 1, 4, 2, 100, 1, 1, 1, 645]
+sortedArr = insertSort(unsortedArr)
+
+print(sortedArr)
